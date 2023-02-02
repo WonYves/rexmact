@@ -1,30 +1,30 @@
 import React, { Component } from 'react'
-import Swiper from 'swiper'
+import Swiper, {Navigation, Pagination} from 'swiper'
 import 'swiper/css';
-
+import 'swiper/css/pagination';
+Swiper.use([Navigation, Pagination])
 export default class App extends Component {
 
   state = {
-    list: ['111', '222', '333']
+    list: []
   }
 
-  componentDidMount(){
-    const swiper = new Swiper(".swiper")
+  componentDidMount() {
+
+    new Swiper(".swiper", {
+      pagination: {
+        el: '.swiper-pagination'
+      }
+    })
   }
   render() {
     return (
       <div>
-        <div className="swiper">
+        <div className="swiper" style={{height : '300px', background: 'pink'}}>
           <div className="swiper-wrapper">
-            {
-              this.state.list.map(item => {
-                return (
-                  <div className='swiper-slide' 
-                  key={item}>{item}</div>
-                )
-              })  
-            }
+            {this.props.children}
           </div>
+          <div className="swiper-pagination"></div>
         </div>
       </div>
     )
