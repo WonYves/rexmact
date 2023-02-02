@@ -20,7 +20,9 @@ export default class App extends Component {
   UNSAFE_componentWillUpdate(){
     console.log(document.getElementById('myname').innerHTML)
   }
-  componentDidUpdate(){
+  componentDidUpdate(prevprpos, prevstate){
     console.log(document.getElementById('myname').innerHTML)
+    console.log(prevprpos, prevstate);
+    // 更新前的属性 更新前的状态
   }
 }
