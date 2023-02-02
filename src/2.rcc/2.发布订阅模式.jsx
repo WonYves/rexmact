@@ -18,24 +18,25 @@ const bus = {
   },
   
   // 发布
-  pulish(){
+  pulish(text){
     // 遍历所有的list 将回调函数执行 
     this.list.forEach((callback) => {
-      callback && callback()
+      callback && callback(text)
     })
   }
 
 }
 
 // 订阅者
-bus.subscribe(()=>{
-  console.log(111111);
+bus.subscribe((value)=>{
+  console.log(111111, value);
 })
 
-bus.subscribe(()=>{
-  console.log(2222);
+bus.subscribe((value)=>{
+  console.log(2222, value);
 })
 
 // 发布者
-
-bus.pulish()
+setTimeout(() => {
+  bus.pulish('kerwin')
+}, 1000)
