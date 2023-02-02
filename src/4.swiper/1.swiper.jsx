@@ -10,11 +10,12 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-
     new Swiper(".swiper", {
       pagination: {
         el: '.swiper-pagination'
-      }
+      },
+      loop: true,
+      autoplay: 2000,
     })
   }
   render() {
