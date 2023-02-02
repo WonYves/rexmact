@@ -22,7 +22,11 @@ export default class App extends Component {
     // return true //应该更新
     // return false //阻止render更新
 
-    if(this.state.myname !== nextState.myname){
+    // if(this.state.myname !== nextState.myname){
+    //   return true
+    // }
+
+    if(JSON.stringify(this.state) !== JSON.stringify(nextState)){
       return true
     }
 
