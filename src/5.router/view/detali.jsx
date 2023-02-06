@@ -19,7 +19,6 @@ const De = (props) => {
 
     // 5.sessionStorage传参
     let id = sessionStorage.getItem('id')
-    console.log(id)
   }, [props])
 
   return (
