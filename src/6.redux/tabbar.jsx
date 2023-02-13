@@ -10,7 +10,7 @@ const Tabbar = () => {
         <ul className={styles.tabbar}> 
           {
             data.map((item,index)=> {
-              return <li key={index}>{item}</li>
+              return <li className={styles.tabbarli} key={index}>{item}</li>
             })
           }
         </ul>

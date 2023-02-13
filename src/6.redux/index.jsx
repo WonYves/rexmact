@@ -1,9 +1,19 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Films from './films'
 import Detail from './detail'
 import Tabbar from './tabbar';
+import store  from '../6.redux/store/index';
 const Home = () => {
+
+  const [isShow, setIsShow] = useState()
+
+  useEffect(()=>{
+    store.subscribe(() => {
+      console.log('订阅', store.getState().show);
+      setIsShow(store.getState().show)
+    })
+  }, [])
 
   return (
     <Fragment>
@@ -13,7 +23,7 @@ const Home = () => {
           {/* 动态路由 */}{/* <Route path="/detail/:id" component={Detali}/> */}
           <Route path="/detail" component={Detail}/>
         </BrowserRouter>
-        <Tabbar></Tabbar>
+        {isShow && <Tabbar></Tabbar>}
       </div>
     </Fragment>
   )
