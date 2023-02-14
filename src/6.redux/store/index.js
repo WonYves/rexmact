@@ -3,6 +3,8 @@ import TabbarReducer from '../reducer/TabbarReducer'
 import CityReducer from '../reducer/CityReducer'
 import CinemalistReducer from '../reducer/CinemalistReducer'
 import reduxThunk from 'redux-thunk'
+import reduxPromise from 'redux-promise'
+
 // 多个reducer合并扩展
 const reducer = combineReducers({
   CityReducer,
@@ -10,8 +12,8 @@ const reducer = combineReducers({
   CinemalistReducer
 })
 
-// applyMiddleware redux中间件配合 redux-thunk完成异步
-const store = legacy_createStore(reducer, applyMiddleware(reduxThunk))
+// applyMiddleware redux中间件配合 redux-thunk 或者 redux-Promise完成异步
+const store = legacy_createStore(reducer, applyMiddleware(reduxPromise, reduxThunk))
 
 function WyCreateStore(reducer){
 

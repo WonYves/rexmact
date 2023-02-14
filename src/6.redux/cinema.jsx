@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import store from './store';
-import { getCinemaListAciton } from './action/getCinemaListAciton'
+import  getCinemaListAciton  from './action/getCinemaListAciton'
 const Cinema = () => {
 
   const [data, setData] = useState(store.getState().CinemalistReducer.list)
@@ -8,10 +8,17 @@ const Cinema = () => {
   useEffect(() => {
     if (store.getState().CinemalistReducer.list.length === 0) {
       store.dispatch(getCinemaListAciton())
+    }else{
+      console.log('store缓存');
     }
-    store.subscribe(() => {
+    let unsubscribe = store.subscribe(() => {
+      console.log('cinema订阅');
       setData(store.getState().CinemalistReducer.list)
     })  
+
+    return ()=> {
+      unsubscribe()
+    }
   }, [])
 
   return (
