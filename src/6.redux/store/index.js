@@ -10,7 +10,8 @@ const reducer = combineReducers({
   CinemalistReducer
 })
 
-const store = WyCreateStore(reducer, applyMiddleware(reduxThunk))
+// applyMiddleware redux中间件配合 redux-thunk完成异步
+const store = legacy_createStore(reducer, applyMiddleware(reduxThunk))
 
 function WyCreateStore(reducer){
 

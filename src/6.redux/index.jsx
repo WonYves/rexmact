@@ -11,7 +11,7 @@ const Home = () => {
 
   useEffect(()=>{
     store.subscribe(() => {
-      console.log('订阅', store.getState()); 
+      console.log('根组件中订阅', store.getState())
       setIsShow(store.getState().TabbarReducer.show)
     })
   }, [])
