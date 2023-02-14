@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import store  from '../6.redux/store/index';
+import {hide, show} from './action/TabbarActionCreator'
 
 const Detali = () => {
 
@@ -7,13 +8,9 @@ const Detali = () => {
 
 
   useEffect(()=>{
-    store.dispatch({
-      type: 'kerwind'
-    })
+    store.dispatch(hide())
     return () => {
-      store.dispatch({
-        type: 'winkerd'
-      })
+      store.dispatch(show())
     }
   }, [])
 

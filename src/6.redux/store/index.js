@@ -1,8 +1,16 @@
-import { legacy_createStore } from "redux";
-import reducer from '../reducer/index'
+import { applyMiddleware, combineReducers, legacy_createStore } from "redux";
+import TabbarReducer from '../reducer/TabbarReducer'
+import CityReducer from '../reducer/CityReducer'
+import CinemalistReducer from '../reducer/CinemalistReducer'
+import reduxThunk from 'redux-thunk'
+// 多个reducer合并扩展
+const reducer = combineReducers({
+  CityReducer,
+  TabbarReducer,
+  CinemalistReducer
+})
 
-
-const store = WyCreateStore(reducer)
+const store = WyCreateStore(reducer, applyMiddleware(reduxThunk))
 
 function WyCreateStore(reducer){
 

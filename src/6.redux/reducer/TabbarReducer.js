@@ -1,6 +1,6 @@
 
 
-const reducer = (prevState = {
+const TabbarReducer = (prevState = {
   show: true 
 }, action) => {
   let newState = {...prevState}
@@ -17,4 +17,4 @@ const reducer = (prevState = {
 
 }
 
-export default reducer
+export default TabbarReducer
