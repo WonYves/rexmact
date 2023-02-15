@@ -9,9 +9,9 @@ import storage from 'redux-persist/lib/storage' //持久化2
 
 // 持久化3
 const persistConfig = {
-  key: 'wiess',
-  storage,
-  whitelist: ['CityReducer']
+  key: 'wiess',  //键值对 键名称
+  storage,  //存储在locastorage中
+  whitelist: ['CityReducer']  //持久化白名单
 }
 
 
@@ -28,8 +28,6 @@ const MyPersistReducer = persistReducer(persistConfig, reducer) //持久化4  �
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 // applyMiddleware redux中间件配合 redux-thunk 或者 redux-Promise完成异步
 const store = legacy_createStore(MyPersistReducer, composeEnhancers(applyMiddleware(reduxPromise, reduxThunk))) //持久化5
-
-
 
 const persistor = persistStore(store) //持久化6
 
