@@ -2,8 +2,18 @@ import { applyMiddleware, combineReducers, compose, legacy_createStore } from "r
 import TabbarReducer from '../reducer/TabbarReducer'
 import CityReducer from '../reducer/CityReducer'
 import CinemalistReducer from '../reducer/CinemalistReducer'
-import reduxThunk from 'redux-thunk'
-import reduxPromise from 'redux-promise'
+import reduxThunk from 'redux-thunk' //异步撞克
+import reduxPromise from 'redux-promise' //异步promise
+import {persistStore, persistReducer} from 'redux-persist'  //持久化1
+import storage from 'redux-persist/lib/storage' //持久化2
+
+// 持久化3
+const persistConfig = {
+  key: 'wiess',
+  storage,
+  whitelist: ['CityReducer']
+}
+
 
 // 多个reducer合并扩展
 const reducer = combineReducers({
@@ -12,13 +22,16 @@ const reducer = combineReducers({
   CinemalistReducer
 })
 
+const MyPersistReducer = persistReducer(persistConfig, reducer) //持久化4  变为持久化的reducer
+
 // 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 // applyMiddleware redux中间件配合 redux-thunk 或者 redux-Promise完成异步
-const store = legacy_createStore(reducer, composeEnhancers(applyMiddleware(reduxPromise, reduxThunk)))
+const store = legacy_createStore(MyPersistReducer, composeEnhancers(applyMiddleware(reduxPromise, reduxThunk))) //持久化5
 
 
 
+const persistor = persistStore(store) //持久化6
 
 
 // 手写简易版Redux legacy_createStore
@@ -55,4 +68,4 @@ function WyCreateStore(reducer){
   }
 }
 
-export default store
+export {store, persistor} //持久化7

@@ -10,3 +10,10 @@ export const show = () => {
     type: 'winkerd'
   }
 }
+
+export const city = (payload) => {
+  return{
+    type: 'citychange',
+    payload
+  }
+}

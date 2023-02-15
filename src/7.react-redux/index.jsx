@@ -3,14 +3,11 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Films from './films'
 import Detail from './detail'
 import Cinema from './cinema'
+import City from './city'
 import Center from './center'
 import Tabbar from './tabbar';
 import { connect } from 'react-redux';
 const Home = (props) => {
-
-  useEffect(()=>{
-    console.log(props);
-  }, [props])
 
   return (
     <Fragment>
@@ -19,6 +16,7 @@ const Home = (props) => {
           <Route path="/films" component={Films}/>
           <Route path="/cinema" component={Cinema}/>
           <Route path="/center" component={Center}/>
+          <Route path="/city" component={City}/>
           {/* 动态路由 */}{/* <Route path="/detail/:id" component={Detali}/> */}
           <Route path="/detail" component={Detail}/>
           {props.isShow && <Tabbar></Tabbar>}

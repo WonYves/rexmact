@@ -40,5 +40,5 @@ const Tabbar = () => {
     </Fragment>
   )
 }
-
+ 
 export default Tabbar
